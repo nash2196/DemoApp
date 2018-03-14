@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  form(method = 'POST', action='/search')
+    div
+      label(for='topic') Search for repositories by topic:
+      input(type = 'text', placeholder='Enter topic name' name='topic')
+
+    button(type='submit') Search
+
+  if items
+    h2 Search Results for #{query}
+    each item in items
+      div.results
+        a(href=item.html_url)
+          label=item.name
+        p Description : #{item.description}
+        label Language : #{item.language}
+        label Forks : #{item.forks}
