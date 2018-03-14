@@ -43,8 +43,6 @@ app.post('/search',function (req,res) {
       request(options, function (error, response, body) {
         // console.log('statusCode:', response.headers); // Print the response status code if a response was received
         var result = JSON.parse(body)
-        console.log('body count:',result.total_count); // Print the HTML for the Google homepage.
-
         res.render('index',{title : 'Demo App',query:req.body.topic,items:result.items});
       });
   };
